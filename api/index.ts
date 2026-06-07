@@ -15,7 +15,7 @@ async function bootstrap() {
     );
 
     app.enableCors({ origin: '*' });
-
+app.setGlobalPrefix('api');
     const config = new DocumentBuilder()
       .setTitle('JWT')
       .setDescription('Authorization Practice')
