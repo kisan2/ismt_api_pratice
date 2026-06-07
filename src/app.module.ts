@@ -23,16 +23,15 @@ import { PostModule } from './post/post.module';
   }),
 
   //database
-  TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'Hahaha<3',
-      database: 'auth', 
-      entities:[User, Post],
-      synchronize:true
-    }),
+ TypeOrmModule.forRoot({
+  type: 'postgres',
+  url: process.env.DATABASE_URL,
+  entities: [User, Post],
+  synchronize: true,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+}),
 
   ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'uploads'),

@@ -30,13 +30,10 @@ export class AuthController {
     };
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Get('me')
+  // @UseGuards(JwtAuthGuard)
+  @Get()
   async getMe(@Req() req: RequestWithUser) {
-    return {
-      message: 'Current user fetched successfully',
-      user: req.user,
-    };
+    return this.authService.get()
   }
 
   @Public()

@@ -41,6 +41,14 @@ export class AuthService {
     };
   }
 
+    async get() {
+    const user = await this.usersService.find();
+    return {
+      message: 'User created',
+      user: user
+    };
+  }
+
   async register(email: string, password: string) {
     const user = await this.usersService.create(email, password);
     return {
