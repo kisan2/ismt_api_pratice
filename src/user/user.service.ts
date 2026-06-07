@@ -11,12 +11,12 @@ export class UserService {
     private repo: Repository<User>
   ) {}
 
-  async create(email: string, password: string): Promise<User> {
+  async create(email: string, password: string,username:string): Promise<User> {
     const existing = await this.repo.findOne({ where: { email } });
     if (existing) throw new ConflictException('Email already exists');
 
     const hashPassword = await bcrypt.hash(password, 10);
-    const user = this.repo.create({ email, password: hashPassword });
+    const user = this.repo.create({ email, password: hashPassword,username });
     return this.repo.save(user);
   }
 

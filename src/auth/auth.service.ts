@@ -44,13 +44,13 @@ export class AuthService {
     async get() {
     const user = await this.usersService.find();
     return {
-      message: 'User created',
+      message: 'Users',
       user: user
     };
   }
 
-  async register(email: string, password: string) {
-    const user = await this.usersService.create(email, password);
+  async register(email: string, password: string,username:string) {
+    const user = await this.usersService.create(email, password,username);
     return {
       message: 'User created',
       user: { id: user.id, email: user.email },
